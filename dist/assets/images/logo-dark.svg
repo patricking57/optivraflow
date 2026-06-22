@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 50" width="180" height="50">
+  <g transform="translate(5, 3)">
+    <!-- Tech-forward abstract logo mark -->
+    <rect x="8" y="8" width="8" height="26" rx="4" transform="rotate(-25, 12, 21)" fill="#806bff" />
+    <rect x="20" y="8" width="8" height="26" rx="4" transform="rotate(-25, 24, 21)" fill="#9d8eff" />
+    <rect x="32" y="8" width="8" height="26" rx="4" transform="rotate(-25, 36, 21)" fill="#00e5bd" />
+  </g>
+  <!-- Brand text -->
+  <text x="56" y="32" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="21" fill="#ffffff" letter-spacing="-0.5">Optivraflow</text>
+</svg>
