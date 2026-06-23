@@ -14,7 +14,7 @@ const services = [
     icon: "/assets/images/website-optimization.svg",
     title: "Web Development",
     description:
-      "We craft clean, responsive websites and web applications using modern technologies like React, Next.js, and Node.js. As a small, tight-knit team, we work closely with you to ship fast, reliable experiences that feel tailored to your business.",
+      "We craft clean, responsive websites and web applications using modern technologies like React, Next.js, and Node.js. As a mid-sized team, we work closely with you to ship fast, reliable experiences that feel tailored to your business.",
     link: "/service-list",
     color: "green",
   },
@@ -69,7 +69,7 @@ const achievements = [
     year: "2025",
     title: "Remote‑First Collaboration",
     description:
-      "Grew into a fully remote, small team working with clients in a handful of countries, staying intentionally lean so we can stay close to every project and every stakeholder.",
+      "Grew into a fully remote, mid-sized team working with clients in a handful of countries, staying intentionally lean so we can stay close to every project and every stakeholder.",
     color: "yellow",
   },
 ];
@@ -136,8 +136,8 @@ const AboutUs = () => {
               />
               <h1 className="relative mb-8 text-4xl font-extrabold leading-tight text-purple-700 dark:text-white md:mb-8 lg:px-10 lg:text-[56px]">
                 <span className="relative z-1">
-                  A small, close-knit software studio building products that
-                  actually ship.
+                  A mid-sized software studio building products that actually
+                  ship.
                 </span>
                 <img
                   src="/assets/images/green-arrow.svg"
@@ -146,12 +146,10 @@ const AboutUs = () => {
                 />
               </h1>
               <p className="text-lg md:text-22 xl:px-10">
-                At OptivraFlow, we transform ideas into powerful software
-                solutions.
-                <br /> Our experienced engineers, designers, and AI specialists
-                collaborate with startups and enterprises to deliver scalable
-                applications, intelligent automation, and cloud-native platforms
-                that accelerate business growth and digital transformation.
+                Optivraflow is a mid-sized, focused team of developers and
+                designers. We partner with startups and growing businesses to
+                plan, build, and launch thoughtful software — without the
+                overhead of a large agency.
               </p>
             </div>
 
@@ -217,17 +215,17 @@ const AboutUs = () => {
                 </span>
                 <div className="pt-12 text-purple-700 dark:text-white">
                   <p className="xl:text-22">
-                    As a small, close-knit team, we stay close to every project
-                    — from the first idea to the final deployment. You get
-                    direct access to the people designing and building your
-                    product, so decisions are faster and the end result fits
-                    your business better.
+                    As a mid-sized team, we stay close to every project — from
+                    the first idea to the final deployment. You get direct
+                    access to the people designing and building your product, so
+                    decisions are faster and the end result fits your business
+                    better.
                   </p>
                   <div className="pt-8">
                     <span className="font-bold">– Optivraflow.</span>
                     <span className="font-medium text-purple-600">
                       {" "}
-                      Small, Boutique Software Studio
+                      Mid, Boutique Software Studio
                     </span>
                   </div>
                   <div className="flex flex-wrap justify-center gap-4 pt-10 md:gap-10 lg:justify-start xl:pt-20">
@@ -245,9 +243,9 @@ const AboutUs = () => {
                     </div>
                     <div className="min-w-[120px] space-y-2 bg-blue/[0.16] px-3 py-3.5 text-center text-blue">
                       <h2 className="text-[28px] font-bold leading-tight">
-                        Small
+                        10+
                       </h2>
-                      <span className="inline-block">Core Team</span>
+                      <span className="inline-block">Core Team Members</span>
                     </div>
                   </div>
                 </div>
@@ -295,8 +293,8 @@ const AboutUs = () => {
                         service.color === "green"
                           ? "text-green"
                           : service.color === "blue"
-                            ? "text-blue"
-                            : "text-yellow"
+                          ? "text-blue"
+                          : "text-yellow"
                       }`}
                     >
                       Learn more....

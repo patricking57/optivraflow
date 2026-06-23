@@ -12,9 +12,9 @@ export const contactItems: ContactItem[] = [
   {
     id: "email",
     type: "email",
-    href: "mailto:contact@optivraflow.com",
+    href: "mailto:zacharyking@optivraflow.com",
     label: "Email",
-    display: "contact@optivraflow.com",
+    display: "zacharyking@optivraflow.com",
   },
   {
     id: "telegram",
@@ -26,15 +26,15 @@ export const contactItems: ContactItem[] = [
   {
     id: "whatsapp",
     type: "whatsapp",
-    href: "https://wa.me/12055149507",
+    href: "https://wa.me/16508226572",
     label: "WhatsApp",
-    display: "+1 205 514 9507",
+    display: "+1 650 822 6572",
   },
   {
     id: "location",
     type: "location",
     href: "https://maps.app.goo.gl/1234567890",
     label: "Location",
-    display: "2878 McKinney Ave, Dallas, Texas",
+    display: "451 Donahue St, Unit 204 San Francisco CA 94124",
   },
 ];

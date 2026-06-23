@@ -141,7 +141,10 @@ const Contact = () => {
                       />
                     </div>
                     <a
-                      href="mailto:contact@optivraflow.com"
+                      href={
+                        contactItems.find((item) => item.id === "email")
+                          ?.href
+                      }
                       className="truncate pt-1.5 duration-300 hover:text-red md:pt-3"
                     >
                       {
@@ -184,7 +187,7 @@ const Contact = () => {
                       />
                     </div>
                     <a
-                      href="tel:+12055149507"
+                      href="tel:+16508226572"
                       className="pt-1.5 duration-300 hover:text-green md:pt-3"
                     >
                       {
