@@ -297,7 +297,7 @@ const AboutUs = () => {
                           : "text-yellow"
                       }`}
                     >
-                      Learn more....
+                      Learn more...
                     </Link>
                   </div>
                 ))}
