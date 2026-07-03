@@ -136,7 +136,8 @@ const AboutUs = () => {
               />
               <h1 className="relative mb-8 text-4xl font-extrabold leading-tight text-purple-700 dark:text-white md:mb-8 lg:px-10 lg:text-[56px]">
                 <span className="relative z-1">
-                  A small, close-knit software studio building products that actually ship.
+                  A small, close-knit software studio building products that
+                  actually ship.
                 </span>
                 <img
                   src="/assets/images/green-arrow.svg"
@@ -145,10 +146,12 @@ const AboutUs = () => {
                 />
               </h1>
               <p className="text-lg md:text-22 xl:px-10">
-                Optivraflow is a small, focused team of developers and
-                designers. We partner with startups and growing businesses to
-                plan, build, and launch thoughtful software — without the
-                overhead of a large agency.
+                At OptivraFlow, we transform ideas into powerful software
+                solutions.
+                <br /> Our experienced engineers, designers, and AI specialists
+                collaborate with startups and enterprises to deliver scalable
+                applications, intelligent automation, and cloud-native platforms
+                that accelerate business growth and digital transformation.
               </p>
             </div>
 
@@ -214,11 +217,11 @@ const AboutUs = () => {
                 </span>
                 <div className="pt-12 text-purple-700 dark:text-white">
                   <p className="xl:text-22">
-                    As a small, close-knit team, we stay close to every project — from
-                     the first idea to the final deployment. You get direct
-                     access to the people designing and building your product, so
-                     decisions are faster and the end result fits your business
-                     better.
+                    As a small, close-knit team, we stay close to every project
+                    — from the first idea to the final deployment. You get
+                    direct access to the people designing and building your
+                    product, so decisions are faster and the end result fits
+                    your business better.
                   </p>
                   <div className="pt-8">
                     <span className="font-bold">– Optivraflow.</span>
@@ -241,10 +244,10 @@ const AboutUs = () => {
                       <span className="inline-block">Clients</span>
                     </div>
                     <div className="min-w-[120px] space-y-2 bg-blue/[0.16] px-3 py-3.5 text-center text-blue">
-                       <h2 className="text-[28px] font-bold leading-tight">
+                      <h2 className="text-[28px] font-bold leading-tight">
                         Small
-                       </h2>
-                       <span className="inline-block">Core Team</span>
+                      </h2>
+                      <span className="inline-block">Core Team</span>
                     </div>
                   </div>
                 </div>
@@ -292,8 +295,8 @@ const AboutUs = () => {
                         service.color === "green"
                           ? "text-green"
                           : service.color === "blue"
-                          ? "text-blue"
-                          : "text-yellow"
+                            ? "text-blue"
+                            : "text-yellow"
                       }`}
                     >
                       Learn more....
