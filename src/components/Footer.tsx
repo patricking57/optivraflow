@@ -1,206 +1,85 @@
-import { Link, useLocation } from "react-router-dom";
-import { useEffect } from "react";
-import { FaWhatsapp } from "react-icons/fa";
-import { PiTelegramLogo } from "react-icons/pi";
-import { MdOutlineEmail } from "react-icons/md";
+import { Link } from "react-router-dom";
+import { Mail, Phone, MapPin } from "lucide-react";
+import { footerLinks, siteConfig } from "@/data/siteConfig";
 import { contactItems } from "@/data/contactData";
 
+const iconFor = (type: string) => {
+  if (type === "email") return Mail;
+  if (type === "phone") return Phone;
+  return MapPin;
+};
+
+const FooterColumn = ({
+  title,
+  links,
+}: {
+  title: string;
+  links: { name: string; href: string }[];
+}) => (
+  <div>
+    <h3 className="mb-5 text-sm font-bold uppercase tracking-wide text-white">
+      {title}
+    </h3>
+    <ul className="space-y-3">
+      {links.map((link) => (
+        <li key={link.href}>
+          <Link
+            to={link.href}
+            className="text-sm text-white/60 transition-colors hover:text-primary"
+          >
+            {link.name}
+          </Link>
+        </li>
+      ))}
+    </ul>
+  </div>
+);
+
 export const Footer = () => {
-  const location = useLocation();
-
-  const isActive = (href: string) => {
-    const { pathname } = location;
-
-    if (href === "/insights") {
-      return pathname.startsWith("/insights");
-    }
-
-    if (href === "/service-list") {
-      return (
-        pathname.startsWith("/service-list") ||
-        pathname.startsWith("/service-detail")
-      );
-    }
-
-    if (href === "/case-studies") {
-      return pathname.startsWith("/case-studies");
-    }
-
-    return pathname === href;
-  };
-
-  useEffect(() => {
-    // Set current year
-    const yearElements = document.querySelectorAll(".curr-year");
-    if (yearElements.length) {
-      const year = new Date().getFullYear();
-      yearElements.forEach((el) => {
-        el.textContent = year.toString();
-      });
-    }
-  }, []);
+  const year = new Date().getFullYear();
 
   return (
-    <footer className="mt-auto">
-      <div className="mx-auto max-w-[1536px]">
-        <div className="flex flex-col items-center justify-between gap-6 px-4 py-8 lg:flex-row">
-          {/* <div className="flex flex-col items-center gap-y-5 text-center md:flex-row md:text-left">
-            <Link
-              to="/"
-              className="shrink-0 border-purple-300 md:pe-8 md:ltr:border-r-2 md:rtl:border-l-2"
-            >
-              <img
-                loading="lazy"
-                src="/assets/images/logo-light.svg"
-                alt="Logo"
-                className="inline-flex dark:hidden"
-              />
-              <img
-                loading="lazy"
-                src="/assets/images/logo-dark.svg"
-                alt="Logo"
-                className="hidden dark:inline-flex"
-              />
+    <footer className="mt-auto bg-secondary">
+      <div className="mx-auto max-w-[1400px] px-4 py-16 lg:px-8">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-6">
+          <div className="sm:col-span-2 lg:col-span-2">
+            <Link to="/" className="flex items-center gap-2">
+              <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-white p-1">
+                <img src="/logo.png" alt={siteConfig.name} className="h-full w-full" />
+              </span>
+              <span className="text-lg font-extrabold text-white">
+                {siteConfig.name}
+              </span>
             </Link>
-            <div className="md:ps-8">
-              {contactItems.find((item) => item.id === "location")?.display}
-            </div>
-          </div> */}
-        </div>
-        <div className="border-y-2 border-purple-200 px-4 py-10 dark:border-purple-900">
-          <div className="grid grid-cols-2 gap-x-4 gap-y-10 leading-6 sm:grid-cols-3 lg:grid-cols-4 lg:justify-items-center">
-            <div>
-              <h3 className="pb-8 font-bold text-purple-700 dark:text-white">
-                Quick menu
-              </h3>
-              <ul className="space-y-5 font-medium">
-                <li>
-                  <Link
-                    to="/"
-                    className={`relative duration-300 hover:start-2 hover:text-primary ${
-                      isActive("/") ? "text-primary" : ""
-                    }`}
-                  >
-                    Home
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/service-list"
-                    className={`relative start-0 duration-300 hover:start-2 hover:text-primary ${
-                      isActive("/service-list") ? "text-primary" : ""
-                    }`}
-                  >
-                    Services
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/case-studies"
-                    className={`relative start-0 duration-300 hover:start-2 hover:text-primary ${
-                      isActive("/case-studies") ? "text-primary" : ""
-                    }`}
-                  >
-                    Case Studies
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/insights"
-                    className={`relative start-0 duration-300 hover:start-2 hover:text-primary ${
-                      isActive("/insights") ? "text-primary" : ""
-                    }`}
-                  >
-                    Insights
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="pb-8 font-bold text-purple-700 dark:text-white">
-                Company
-              </h3>
-              <ul className="space-y-5 font-medium">
-                <li>
-                  <Link
-                    to="/about-us"
-                    className={`relative start-0 duration-300 hover:start-2 hover:text-primary ${
-                      isActive("/about-us") ? "text-primary" : ""
-                    }`}
-                  >
-                    About us
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/faq"
-                    className={`relative start-0 duration-300 hover:start-2 hover:text-primary ${
-                      isActive("/faq") ? "text-primary" : ""
-                    }`}
-                  >
-                    FAQ
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="pb-8 font-bold text-purple-700 dark:text-white">
-                Legal
-              </h3>
-              <ul className="space-y-5 font-medium">
-                <li>
-                  <Link
-                    to="/terms-condition"
-                    className={`relative start-0 duration-300 hover:start-2 hover:text-primary ${
-                      isActive("/terms-condition") ? "text-primary" : ""
-                    }`}
-                  >
-                    Terms & condition
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/privacy-policy"
-                    className={`relative start-0 duration-300 hover:start-2 hover:text-primary ${
-                      isActive("/privacy-policy") ? "text-primary" : ""
-                    }`}
-                  >
-                    Privacy policy
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="pb-8 font-bold text-purple-700 dark:text-white">
-                Contact Us
-              </h3>
-              <ul className="space-y-5 font-medium">
-                {contactItems.map((item) => (
-                  <li key={item.id}>
-                    <a
-                      href={item.href}
-                      className="relative flex flex-row items-center gap-2 start-0 duration-300 hover:start-2 hover:text-primary"
-                    >
-                      {item.type === "email" && (
-                        <MdOutlineEmail className="h-6 w-6" />
-                      )}
-                      {item.type === "telegram" && (
-                        <PiTelegramLogo className="h-6 w-6" />
-                      )}
-                      {item.type === "whatsapp" && (
-                        <FaWhatsapp className="h-6 w-6" />
-                      )}
-                      {item.type !== "location" && item.display}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <p className="mt-4 max-w-xs text-sm text-white/60">
+              {siteConfig.description}
+            </p>
+            <ul className="mt-6 space-y-3">
+              {contactItems
+                .filter((item) => item.type === "email")
+                .map((item) => {
+                  const Icon = iconFor(item.type);
+                  return (
+                    <li key={item.id} className="flex items-start gap-3 text-sm text-white/60">
+                      <Icon className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                      <a href={item.href} className="hover:text-primary">
+                        {item.display}
+                      </a>
+                    </li>
+                  );
+                })}
+            </ul>
           </div>
+          <FooterColumn title="Solutions" links={footerLinks.solutions} />
+          <FooterColumn title="Host Program" links={footerLinks.hostProgram} />
+          <FooterColumn title="Company" links={footerLinks.company} />
+          <FooterColumn title="Legal" links={footerLinks.legal} />
         </div>
-        <div className="px-4 py-6 text-center text-base text-purple-400">
-          Copyright © <span className="curr-year"></span> Optivraflow. All rights
-          reserved.
+        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-xs text-white/50 sm:flex-row">
+          <span>
+            Copyright © {year} {siteConfig.name}. All rights reserved.
+          </span>
+          <span>Company-owned hardware. Professionally managed. Securely monitored.</span>
         </div>
       </div>
     </footer>

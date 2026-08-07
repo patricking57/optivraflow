@@ -20,12 +20,12 @@ export default {
   	extend: {
   		fontFamily: {
   			sans: [
-  				'Plus Jakarta Sans',
+  				'DM Sans',
   				'system-ui',
   				'sans-serif'
   			],
   			jakarta: [
-  				'Plus Jakarta Sans',
+  				'DM Sans',
   				'sans-serif'
   			]
   		},
@@ -39,11 +39,11 @@ export default {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			primary: {
-  				DEFAULT: '#6c54ff',
+  				DEFAULT: '#0ea5e9',
   				foreground: '#ffffff',
   			},
   			secondary: {
-  				DEFAULT: '#1a1036',
+  				DEFAULT: '#0b1220',
   				foreground: '#ffffff',
   			},
   			purple: {

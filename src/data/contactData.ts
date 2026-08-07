@@ -1,4 +1,4 @@
-export type ContactType = "email" | "telegram" | "whatsapp" | "location";
+export type ContactType = "email" | "phone" | "address";
 
 export interface ContactItem {
   id: string;
@@ -8,33 +8,27 @@ export interface ContactItem {
   display: string;
 }
 
+// Phone and address are placeholders until real company information is available.
 export const contactItems: ContactItem[] = [
   {
     id: "email",
     type: "email",
-    href: "mailto:zacharyking@optivraflow.com",
+    href: "mailto:iansmith@optivraflow.com",
     label: "Email",
-    display: "zacharyking@optivraflow.com",
+    display: "iansmith@optivraflow.com",
   },
   {
-    id: "telegram",
-    type: "telegram",
-    href: "https://t.me/optivraflow",
-    label: "Telegram",
-    display: "@optivraflow",
+    id: "phone",
+    type: "phone",
+    href: "tel:+10000000000",
+    label: "Phone",
+    display: "[Phone Number Placeholder]",
   },
   {
-    id: "whatsapp",
-    type: "whatsapp",
-    href: "https://wa.me/16508226572",
-    label: "WhatsApp",
-    display: "+1 650 822 6572",
-  },
-  {
-    id: "location",
-    type: "location",
-    href: "https://maps.app.goo.gl/1234567890",
-    label: "Location",
-    display: "451 Donahue St, Unit 204 San Francisco CA 94124",
+    id: "address",
+    type: "address",
+    href: "#",
+    label: "Address",
+    display: "[Business Address Placeholder]",
   },
 ];

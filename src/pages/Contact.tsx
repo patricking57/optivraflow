@@ -1,307 +1,142 @@
-import { useEffect, useState } from "react";
-import { FAQSection } from "@/components/FAQSection";
-import { TestimonialsSection } from "@/components/TestimonialsSection";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { Mail, Phone, MapPin } from "lucide-react";
+import { PageHero } from "@/components/PageHero";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import AOS from "aos";
-import "aos/dist/aos.css";
-import { NewsletterSection } from "@/components/NewsletterSection";
 import { contactItems } from "@/data/contactData";
+
+const iconFor = (type: string) => (type === "email" ? Mail : type === "phone" ? Phone : MapPin);
 
 const Contact = () => {
   const { toast } = useToast();
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
+  const [form, setForm] = useState({
+    name: "",
+    company: "",
     email: "",
-    subject: "",
+    phone: "",
+    workloadType: "",
+    numberOfUsers: "",
+    hardware: "",
+    locationRequirements: "",
     message: "",
   });
-
-  useEffect(() => {
-    AOS.init({
-      once: true,
-    });
-  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast({
-      title: "Message sent!",
-      description: "We'll get back to you as soon as possible.",
+      title: "Request received",
+      description: "Our infrastructure team will follow up by email as soon as possible.",
     });
-    setFormData({
-      firstName: "",
-      lastName: "",
+    setForm({
+      name: "",
+      company: "",
       email: "",
-      subject: "",
+      phone: "",
+      workloadType: "",
+      numberOfUsers: "",
+      hardware: "",
+      locationRequirements: "",
       message: "",
     });
   };
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => setForm({ ...form, [e.target.name]: e.target.value });
 
   return (
-    <div className="w-full mx-auto">
-      {/* Hero Section */}
-      <div className="overflow-x-hidden pb-16 pt-10 md:pt-16 lg:pb-32">
-        <div className="mx-auto max-w-[1536px] px-4">
-          <div className="relative">
-            <img
-              alt="Chat image"
-              loading="lazy"
-              width="77"
-              height="95"
-              className="absolute end-10 top-0 hidden lg:block"
-              src="/assets/images/chat.svg"
-              data-aos="fade-left"
-              data-aos-duration="1000"
-            />
-            <div className="relative mx-auto max-w-[1142px] pb-14 text-center xl:pb-24">
-              <span
-                className="absolute -start-96 top-24 rtl:rotate-y-180"
-                data-aos="fade-right"
-                data-aos-duration="2000"
-              >
-                <svg width="488" height="124" viewBox="0 0 488 124" fill="none">
-                  <path
-                    opacity="0.6"
-                    d="M485 3H293.31C265.695 3 243.31 25.3858 243.31 53V71C243.31 98.6142 220.924 121 193.31 121H0"
-                    stroke="url(#paint0_radial_434_1170)"
-                    strokeWidth="6"
-                    strokeLinecap="round"
-                  />
-                  <defs>
-                    <radialGradient
-                      id="paint0_radial_434_1170"
-                      cx="0"
-                      cy="0"
-                      r="1"
-                      gradientUnits="userSpaceOnUse"
-                      gradientTransform="translate(177.5 -59.5) scale(228 204.246)"
-                    >
-                      <stop stopColor="#806BFF" />
-                      <stop offset="1" stopColor="#806BFF" stopOpacity="0" />
-                    </radialGradient>
-                  </defs>
-                </svg>
-              </span>
-              <h1
-                className="mb-8 text-4xl font-extrabold leading-tight text-purple-700 dark:text-white md:mb-12 lg:text-[56px]"
-                data-aos="zoom-in"
-                data-aos-duration="1000"
-              >
-                Get our all info directly from here
-              </h1>
-              <p
-                className="text-lg md:text-22 lg:px-32 text-purple-600 dark:text-purple-400"
-                data-aos="zoom-in"
-                data-aos-duration="1000"
-              >
-                Find a team of digital marketers you can rely on. We build trust
-                through communication, transparency, and results.
+    <div>
+      <PageHero
+        eyebrow="Contact"
+        title="Talk to our team"
+        description="Whether you need computing infrastructure or want to become an Infrastructure Host, we're here to help."
+      />
+
+      <div className="bg-white py-16 sm:py-20 lg:py-24">
+        <div className="mx-auto grid max-w-[1142px] gap-10 px-4 lg:grid-cols-2">
+          {/* Customer path */}
+          <div className="rounded-2xl border border-border p-6 sm:p-8">
+            <h2 className="mb-2 text-xl font-bold text-secondary">
+              Need computing infrastructure?
+            </h2>
+            <p className="mb-6 text-sm text-muted-foreground">
+              Tell us about your workload and we&apos;ll help you find the right configuration.
+            </p>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="grid gap-4 sm:grid-cols-2">
+                <Input name="name" placeholder="Name" required value={form.name} onChange={handleChange} />
+                <Input name="company" placeholder="Company" value={form.company} onChange={handleChange} />
+                <Input name="email" type="email" placeholder="Business email" required value={form.email} onChange={handleChange} />
+                <Input name="phone" placeholder="Phone" value={form.phone} onChange={handleChange} />
+                <Input name="workloadType" placeholder="Workload type" value={form.workloadType} onChange={handleChange} />
+                <Input name="numberOfUsers" placeholder="Number of users" value={form.numberOfUsers} onChange={handleChange} />
+              </div>
+              <Input name="hardware" placeholder="Required hardware" value={form.hardware} onChange={handleChange} />
+              <Input
+                name="locationRequirements"
+                placeholder="Location requirements"
+                value={form.locationRequirements}
+                onChange={handleChange}
+              />
+              <Textarea
+                name="message"
+                placeholder="Message"
+                rows={4}
+                required
+                value={form.message}
+                onChange={handleChange}
+              />
+              <Button type="submit" className="w-full">
+                Request Infrastructure
+              </Button>
+            </form>
+          </div>
+
+          {/* Host path */}
+          <div className="flex flex-col justify-between rounded-2xl bg-secondary p-6 text-white sm:p-8">
+            <div>
+              <h2 className="mb-2 text-xl font-bold">
+                Interested in becoming an Infrastructure Host?
+              </h2>
+              <p className="mb-6 text-sm text-white/70">
+                Provide space, reliable power, and stable internet for
+                company-owned computing equipment and receive recurring
+                compensation under a clear Host Agreement.
               </p>
+              <ul className="mb-8 space-y-2 text-sm text-white/70">
+                <li>Company-owned hardware, never purchased by the host</li>
+                <li>Compensation according to your Host Agreement</li>
+                <li>Full technical support from our team</li>
+              </ul>
             </div>
+            <Button asChild size="lg" variant="outline" className="border-white/30 text-white hover:bg-white hover:text-secondary">
+              <Link to="/become-a-host">Apply to Host</Link>
+            </Button>
           </div>
         </div>
-      </div>
 
-      {/* Contact Form Section */}
-      <div className="overflow-x-hidden pb-16 lg:pb-32">
-        <div className="mx-auto max-w-[1536px] px-4">
-          <div className="grid items-start gap-8 lg:grid-cols-2">
-            {/* Left Column - Contact Info */}
-            <div>
-              <div
-                className="text-center lg:ltr:text-left lg:rtl:text-right"
-                data-aos="fade-right"
-                data-aos-duration="1000"
-              >
-                <h2 className="mb-5 text-[26px] leading-[1.75] font-bold text-purple-700 dark:text-white">
-                  Let's work together
-                </h2>
-                <p className="md:text-xl text-purple-600 dark:text-purple-400">
-                  We're here to help bring your digital vision to life. Whether
-                  you have a project in mind, need technical support, or want to
-                  explore how we can collaborate, our team is ready to assist
-                  you.
-                </p>
-                <div className="mt-10 space-y-8 font-medium text-purple-700 dark:text-white md:mt-16 md:space-y-12 md:text-xl">
-                  <div className="flex items-start gap-4">
-                    <div className="h-10 w-10 shrink-0 md:h-14 md:w-14">
-                      <img
-                        alt="Email icon"
-                        loading="lazy"
-                        width="56"
-                        height="56"
-                        src="/assets/images/email-icon.svg"
-                      />
-                    </div>
-                    <a
-                      href={
-                        contactItems.find((item) => item.id === "email")
-                          ?.href
-                      }
-                      className="truncate pt-1.5 duration-300 hover:text-red md:pt-3"
-                    >
-                      {
-                        contactItems.find((item) => item.id === "email")
-                          ?.display
-                      }
-                    </a>
+        <div className="mx-auto mt-16 grid max-w-[1142px] gap-6 px-4 sm:grid-cols-3">
+          {contactItems.map((item) => {
+            const Icon = iconFor(item.type);
+            return (
+              <div key={item.id} className="flex items-start gap-3 rounded-xl border border-border p-5">
+                <Icon className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
+                <div>
+                  <div className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                    {item.label}
                   </div>
-                  <div className="flex items-start gap-4">
-                    <div className="h-10 w-10 shrink-0 md:h-14 md:w-14">
-                      <img
-                        alt="Telegram icon"
-                        loading="lazy"
-                        width="56"
-                        height="56"
-                        src="/assets/images/telegram-icon.svg"
-                      />
-                    </div>
-                    <a
-                      href={
-                        contactItems.find((item) => item.id === "telegram")
-                          ?.href
-                      }
-                      className="truncate pt-1.5 duration-300 hover:text-red md:pt-3"
-                    >
-                      {
-                        contactItems.find((item) => item.id === "telegram")
-                          ?.display
-                      }
-                    </a>
-                  </div>
-                  <div className="flex items-start gap-4">
-                    <div className="h-10 w-10 shrink-0 md:h-14 md:w-14">
-                      <img
-                        alt="Call icon"
-                        loading="lazy"
-                        width="56"
-                        height="56"
-                        src="/assets/images/call-icon.svg"
-                      />
-                    </div>
-                    <a
-                      href="tel:+16508226572"
-                      className="pt-1.5 duration-300 hover:text-green md:pt-3"
-                    >
-                      {
-                        contactItems.find((item) => item.id === "whatsapp")
-                          ?.display
-                      }
-                    </a>
-                  </div>
-
-                  {/* <div className="flex items-start gap-4">
-                    <div className="h-10 w-10 shrink-0 md:h-14 md:w-14">
-                      <img
-                        alt="Location icon"
-                        loading="lazy"
-                        width="56"
-                        height="56"
-                        src="/assets/images/location-icon.svg"
-                      />
-                    </div>
-                    <p className="pt-1.5 md:pt-3">
-                      {
-                        contactItems.find((item) => item.id === "location")
-                          ?.display
-                      }
-                    </p>
-                  </div> */}
+                  <a href={item.href} className="text-sm text-secondary hover:text-primary">
+                    {item.display}
+                  </a>
                 </div>
               </div>
-            </div>
-
-            {/* Right Column - Contact Form */}
-            <div
-              className="mt-10 rounded-2xl border-2 border-purple-300/60 bg-white p-5 shadow-[0_0_80px_rgba(119,128,161,0.1)] dark:border-purple-900 dark:bg-purple-900 dark:shadow-none md:p-8 lg:mt-0"
-              data-aos="fade-left"
-              data-aos-duration="1000"
-            >
-              <form onSubmit={handleSubmit}>
-                <div className="mb-7 grid gap-7 md:grid-cols-2 md:gap-y-9">
-                  <div>
-                    <input
-                      name="firstName"
-                      placeholder="First Name"
-                      type="text"
-                      value={formData.firstName}
-                      onChange={handleChange}
-                      className="form-input w-full rounded-lg border-2 border-purple-300/60 bg-transparent px-4 py-3 text-base text-purple-700 placeholder:text-purple-400 focus:border-primary focus:outline-none"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <input
-                      name="lastName"
-                      placeholder="Last Name"
-                      type="text"
-                      value={formData.lastName}
-                      onChange={handleChange}
-                      className="form-input w-full rounded-lg border-2 border-purple-300/60 bg-transparent px-4 py-3 text-base text-purple-700 placeholder:text-purple-400 focus:border-primary focus:outline-none"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <input
-                      name="email"
-                      placeholder="Email ID"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      className="form-input w-full rounded-lg border-2 border-purple-300/60 bg-transparent px-4 py-3 text-base text-purple-700 placeholder:text-purple-400 focus:border-primary focus:outline-none"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <input
-                      name="subject"
-                      placeholder="Subject"
-                      type="text"
-                      value={formData.subject}
-                      onChange={handleChange}
-                      className="form-input w-full rounded-lg border-2 border-purple-300/60 bg-transparent px-4 py-3 text-base text-purple-700 placeholder:text-purple-400 focus:border-primary focus:outline-none"
-                      required
-                    />
-                  </div>
-                  <div className="md:col-span-2">
-                    <textarea
-                      name="message"
-                      rows={4}
-                      placeholder="Type your messages"
-                      value={formData.message}
-                      onChange={handleChange}
-                      className="form-textarea w-full rounded-lg border-2 border-purple-300/60 bg-transparent px-4 py-3 text-base text-purple-700 placeholder:text-purple-400 focus:border-primary focus:outline-none"
-                      required
-                    />
-                  </div>
-                </div>
-                <button
-                  type="submit"
-                  className="btn w-full text-base font-bold uppercase md:max-w-[285px] bg-primary text-white hover:bg-secondary"
-                >
-                  send message
-                </button>
-              </form>
-            </div>
-          </div>
+            );
+          })}
         </div>
       </div>
-
-      {/* FAQ Section */}
-      <FAQSection />
-
-      {/* Testimonials Section */}
-      <TestimonialsSection />
-
-      {/* Newsletter Section */}
-      <NewsletterSection />
     </div>
   );
 };

@@ -6,31 +6,15 @@ import { BackToTop } from "@/components/BackToTop";
 
 export const Layout = () => {
   const location = useLocation();
-  const showTopCurve =
-    location.pathname === "/" || location.pathname === "/insights";
 
-  // Scroll to top on route change
   useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: "smooth",
-    });
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }, [location.pathname]);
 
   return (
-    <div className="flex min-h-screen flex-col bg-white font-jakarta text-lg font-normal text-purple-500 antialiased dark:bg-secondary">
-      {showTopCurve && (
-        <img
-          src="/assets/images/top-right-curv.svg"
-          alt="Arrow right"
-          className="absolute right-0 top-0 hidden lg:block"
-          data-aos="fade-down"
-          data-aos-duration="2000"
-        />
-      )}
+    <div className="flex min-h-screen flex-col bg-white font-sans text-base font-normal text-foreground antialiased">
       <Navbar />
-      <div className="flex-1 pt-24 lg:pt-32">
+      <div className="flex-1 pt-20">
         <Outlet />
       </div>
       <Footer />

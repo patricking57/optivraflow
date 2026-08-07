@@ -6,21 +6,21 @@ import {
   AccordionTrigger,
   AccordionContent,
 } from "@/components/ui/accordion";
-import { customerFaqs } from "@/data/faqData";
+import { hostFaqs } from "@/data/hostData";
 
-const FAQ = () => {
+const HostFAQ = () => {
   return (
     <div>
       <PageHero
-        eyebrow="Customer FAQ"
-        title="Frequently asked questions"
-        description="Answers to common questions about how our distributed computing infrastructure works."
+        eyebrow="Host FAQ"
+        title="Infrastructure Host frequently asked questions."
+        description="Answers to common questions from applicants and current Infrastructure Hosts."
       />
 
       <div className="bg-white py-16 sm:py-20 lg:py-24">
         <div className="mx-auto max-w-[800px] px-4">
           <Accordion type="single" collapsible className="space-y-3">
-            {customerFaqs.map((faq, index) => (
+            {hostFaqs.map((faq, index) => (
               <AccordionItem
                 key={faq.question}
                 value={`item-${index}`}
@@ -39,10 +39,15 @@ const FAQ = () => {
       </div>
 
       <div className="bg-muted/40 py-16 sm:py-20 lg:py-24">
-        <CTASection />
+        <CTASection
+          title="Ready to apply?"
+          description="Start your Infrastructure Host application today."
+          primaryCta={{ label: "Apply to Become a Host", to: "/become-a-host" }}
+          secondaryCta={{ label: "Host Requirements", to: "/become-a-host/requirements" }}
+        />
       </div>
     </div>
   );
 };
 
-export default FAQ;
+export default HostFAQ;

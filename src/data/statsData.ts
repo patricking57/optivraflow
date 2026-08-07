@@ -1,12 +1,11 @@
-export interface Stat {
-  value: number;
-  suffix: string;
+export interface TrustBadge {
   label: string;
 }
 
-export const stats: Stat[] = [
-  { value: 30, suffix: "+", label: "Projects delivered" },
-  { value: 10, suffix: "+", label: "Years of experience" },
-  { value: 5, suffix: "+", label: "Healthcare & fintech clients" },
-  { value: 10, suffix: "+", label: "Cloud & AI certifications" },
+// Deliberately non-numeric: revise.md prohibits fabricated statistics.
+export const trustBadges: TrustBadge[] = [
+  { label: "Company-owned hardware" },
+  { label: "Professionally managed" },
+  { label: "Securely monitored" },
+  { label: "U.S.-based infrastructure" },
 ];
