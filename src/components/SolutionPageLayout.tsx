@@ -50,7 +50,7 @@ export const SolutionPageLayout = ({
             <img
               src={image.src}
               alt={image.alt}
-              className="h-64 w-full rounded-2xl object-cover sm:h-80"
+              className="h-64 w-full rounded-2xl object-cover sm:h-80 md:h-96 lg:h-[600px]"
               loading="lazy"
             />
           </div>
@@ -64,10 +64,17 @@ export const SolutionPageLayout = ({
           </h2>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {cards.map((card) => (
-              <div key={card.title} className="rounded-xl border border-border bg-white p-6">
+              <div
+                key={card.title}
+                className="rounded-xl border border-border bg-white p-6"
+              >
                 <card.icon className="mb-4 h-7 w-7 text-primary" />
-                <h3 className="mb-2 text-sm font-semibold text-secondary">{card.title}</h3>
-                <p className="text-sm text-muted-foreground">{card.description}</p>
+                <h3 className="mb-2 text-sm font-semibold text-secondary">
+                  {card.title}
+                </h3>
+                <p className="text-sm text-muted-foreground">
+                  {card.description}
+                </p>
               </div>
             ))}
           </div>
