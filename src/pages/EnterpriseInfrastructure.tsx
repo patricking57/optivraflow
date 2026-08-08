@@ -29,11 +29,6 @@ const EnterpriseInfrastructure = () => {
         audiences={audiences}
         note="Enterprise deployments are scoped individually based on workload, headcount, and location requirements."
       />
-      <div className="bg-white pb-16 sm:pb-20">
-        <div className="mx-auto max-w-[1142px] px-4">
-          <NetworkMap />
-        </div>
-      </div>
     </div>
   );
 };
